@@ -1,0 +1,104 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Beer Craft",
+		"_postman_id": "875e5db0-7e44-4327-1926-08eba98f2214",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Request",
+			"request": {
+				"url": "localhost:9000/beerhouse/beers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n  \"name\": \"Campinas's Beer\",\n  \"ingredients\" : \"\",\n   \"alcoholContent\" : \"4%\",\n   \"price\": 16.90,\n   \"category\": \"Pilsen\"\n}"
+				},
+				"description": "Send a post request to application"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Request",
+			"request": {
+				"url": "localhost:9000/beerhouse/beers",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Send a get resquest"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Request",
+			"request": {
+				"url": "localhost:9000/beerhouse/beers",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 1,\n        \"name\": \"Campinas's Beer\",\n        \"ingredients\": \"Hop and wather\",\n        \"alcoholContent\": \"A lot\",\n        \"price\": 25.95,\n        \"category\": \"Lager\"\n    }"
+				},
+				"description": "Send a pust request"
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Request",
+			"request": {
+				"url": "localhost:9000/beerhouse/beers",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id\": 1,\n        \"name\": \"Jordano's Beer\"\n    }"
+				},
+				"description": "Send a Patch Request"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"request": {
+				"url": "localhost:9000/beerhouse/beers/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Send a delete request"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Request (id)",
+			"request": {
+				"url": "localhost:9000/beerhouse/beers/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Send a Get Request with id "
+			},
+			"response": []
+		}
+	]
+}

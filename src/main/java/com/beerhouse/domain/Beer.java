@@ -32,6 +32,8 @@ public class Beer implements Serializable {
     @Column(name = "CATEGORY")
     private String category;
 
+    public Beer() {
+    }
 
     public Integer getId() {
         return id;

@@ -3,6 +3,9 @@ package com.beerhouse.services;
 import com.beerhouse.domain.Beer;
 import com.beerhouse.repositories.BeerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -18,6 +21,11 @@ public class BeerService {
 
     @Autowired
     private BeerRepository beerRepository;
+
+    public Page<Beer> findAll(Integer page, Integer lines, String orderBy, String direction) {
+        PageRequest pageRequest = new PageRequest(page, lines, Sort.Direction.valueOf(direction), orderBy);
+        return beerRepository.findAll(pageRequest);
+    }
 
     public List<Beer> findAll() {
         return beerRepository.findAll();

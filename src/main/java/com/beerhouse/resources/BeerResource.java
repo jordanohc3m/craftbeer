@@ -4,6 +4,7 @@ import com.beerhouse.Exception.IdConflictException;
 import com.beerhouse.domain.Beer;
 import com.beerhouse.services.BeerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +26,17 @@ public class BeerResource {
     @Autowired
     private BeerService beerService;
 
+    final static String DEFAULT_PAGE = "0";
+    final static String DEFAULT_LINES = "10";
+    final static String DEFAULT_ORDERBY = "id";
+    final static String DEFAULT_DIRECTION = "ASC";
+
     @GetMapping(produces = MediaTypes.HAL_JSON_VALUE)
-    public ResponseEntity<?> findAll() {
-        return ResponseEntity.ok().body(beerService.findAll());
+    public ResponseEntity<Page<Beer>> findAll(@RequestParam(value = "page", defaultValue = DEFAULT_PAGE) Integer page,
+                                              @RequestParam(value = "lines", defaultValue = DEFAULT_LINES) Integer lines,
+                                              @RequestParam(value = "orderBy", defaultValue = DEFAULT_ORDERBY) String orderBy,
+                                              @RequestParam(value = "direction", defaultValue = DEFAULT_DIRECTION) String direction) {
+        return ResponseEntity.ok().body(beerService.findAll(page, lines, orderBy, direction));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

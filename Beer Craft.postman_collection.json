@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Beer Craft",
-		"_postman_id": "875e5db0-7e44-4327-1926-08eba98f2214",
+		"_postman_id": "5727c0aa-6daf-c905-0b39-dbcff296ebe3",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -33,7 +33,10 @@
 				"url": "localhost:9000/beerhouse/beers",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Send a get resquest"
 			},
 			"response": []
@@ -41,7 +44,7 @@
 		{
 			"name": "Put Request",
 			"request": {
-				"url": "localhost:9000/beerhouse/beers",
+				"url": "localhost:9000/beerhouse/beers/1",
 				"method": "PUT",
 				"header": [
 					{
@@ -61,7 +64,7 @@
 		{
 			"name": "Patch Request",
 			"request": {
-				"url": "localhost:9000/beerhouse/beers",
+				"url": "localhost:9000/beerhouse/beers/1",
 				"method": "PATCH",
 				"header": [
 					{
@@ -84,7 +87,10 @@
 				"url": "localhost:9000/beerhouse/beers/2",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Send a delete request"
 			},
 			"response": []
@@ -95,7 +101,10 @@
 				"url": "localhost:9000/beerhouse/beers/1",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "Send a Get Request with id "
 			},
 			"response": []

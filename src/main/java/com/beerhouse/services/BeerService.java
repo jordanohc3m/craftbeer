@@ -39,19 +39,19 @@ public class BeerService {
     public void patch(Beer beer) {
         Beer newBeer = this.findOne(beer.getId()).orElseThrow(EntityNotFoundException::new);
 
-        if (validadeNewObject(beer.getName(), newBeer.getName()))
+        if (validateNewObject(beer.getName(), newBeer.getName()))
             newBeer.setName(beer.getName());
 
-        if (validadeNewObject(beer.getIngredients(), newBeer.getIngredients()))
+        if (validateNewObject(beer.getIngredients(), newBeer.getIngredients()))
             newBeer.setIngredients(beer.getIngredients());
 
-        if (validadeNewObject(beer.getAlcoholContent(), newBeer.getAlcoholContent()))
+        if (validateNewObject(beer.getAlcoholContent(), newBeer.getAlcoholContent()))
             newBeer.setAlcoholContent(beer.getAlcoholContent());
 
-        if (validadeNewObject(beer.getPrice(), newBeer.getPrice()))
+        if (validateNewObject(beer.getPrice(), newBeer.getPrice()))
             newBeer.setPrice(beer.getPrice());
 
-        if (validadeNewObject(beer.getCategory(), newBeer.getCategory()))
+        if (validateNewObject(beer.getCategory(), newBeer.getCategory()))
             newBeer.setCategory(beer.getCategory());
 
         beerRepository.save(newBeer);
@@ -63,7 +63,7 @@ public class BeerService {
         beerRepository.delete(beer);
     }
 
-    private Boolean validadeNewObject(Object object, Object newObject) {
+    private Boolean validateNewObject(Object object, Object newObject) {
         return Objects.nonNull(object) && !object.equals(newObject);
     }
 }

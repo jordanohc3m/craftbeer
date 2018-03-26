@@ -1,5 +1,6 @@
 package com.beerhouse.resources;
 
+import com.beerhouse.Exception.IdConflictException;
 import com.beerhouse.domain.Beer;
 import com.beerhouse.services.BeerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.Objects;
 
 /**
  * Created by jordano on 24/03/2018.
@@ -40,14 +42,24 @@ public class BeerResource {
         return ResponseEntity.ok().body(beerService.findOne(id).orElseThrow(EntityNotFoundException::new));
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> update(@RequestBody @Valid Beer beer) {
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> update(@PathVariable("id") Integer id,
+                                       @RequestBody @Valid Beer beer) {
+
+        if (!Objects.equals(beer.getId(), id)) {
+            throw new IdConflictException();
+        }
+
         beerService.update(beer);
         return ResponseEntity.ok().build();
     }
 
-    @PatchMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> patch(@RequestBody @Valid Beer beer) {
+    @PatchMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> patch(@PathVariable("id") Integer id,
+                                      @RequestBody @Valid Beer beer) {
+        if (!Objects.equals(beer.getId(), id)) {
+            throw new IdConflictException();
+        }
         beerService.patch(beer);
         return ResponseEntity.ok().build();
     }

@@ -5,7 +5,6 @@ import com.beerhouse.domain.Beer;
 import com.beerhouse.services.BeerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +30,7 @@ public class BeerResource {
     final static String DEFAULT_ORDERBY = "id";
     final static String DEFAULT_DIRECTION = "ASC";
 
-    @GetMapping(produces = MediaTypes.HAL_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Page<Beer>> findAll(@RequestParam(value = "page", defaultValue = DEFAULT_PAGE) Integer page,
                                               @RequestParam(value = "lines", defaultValue = DEFAULT_LINES) Integer lines,
                                               @RequestParam(value = "orderBy", defaultValue = DEFAULT_ORDERBY) String orderBy,
@@ -46,7 +45,7 @@ public class BeerResource {
         return ResponseEntity.created(location).build();
     }
 
-    @GetMapping(value = "/{id}", produces = MediaTypes.HAL_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> findOne(@PathVariable("id") Integer id) {
         return ResponseEntity.ok().body(beerService.findOne(id).orElseThrow(EntityNotFoundException::new));
     }

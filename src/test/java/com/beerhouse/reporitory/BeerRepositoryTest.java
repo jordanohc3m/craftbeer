@@ -1,4 +1,4 @@
-package com.beerhouse.repositories.tests;
+package com.beerhouse.reporitory;
 
 import com.beerhouse.domain.Beer;
 import com.beerhouse.services.BeerService;
